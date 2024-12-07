@@ -1,0 +1,64 @@
+<div class="details-page">
+  <div class="details-header">
+    <h2>Currency Details: {{ fromCurrency }} to {{ toCurrency }}</h2>
+    <button class="back-btn" (click)="goBack()">Back to Converter</button>
+  </div>
+
+  <!-- Historical Data Section -->
+  <div class="historical-section" *ngIf="!loading$.value && !error$.value">
+    <h3>Historical Exchange Rates</h3>
+    
+    <!-- Yearly Data -->
+    <div class="historical-block">
+      <h4>Last Year</h4>
+      <div class="rates-list">
+        <div class="rate-item" *ngFor="let rate of historicalData.yearly">
+          <span class="date">{{ rate.date | date }}</span>
+          <span class="rate">1 {{ fromCurrency }} = {{ rate.rate | number:'1.4-4' }} {{ toCurrency }}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Monthly Data -->
+    <div class="historical-block">
+      <h4>Last Month</h4>
+      <div class="rates-list">
+        <div class="rate-item" *ngFor="let rate of historicalData.monthly">
+          <span class="date">{{ rate.date | date }}</span>
+          <span class="rate">1 {{ fromCurrency }} = {{ rate.rate | number:'1.4-4' }} {{ toCurrency }}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Daily Data -->
+    <div class="historical-block">
+      <h4>Last Week</h4>
+      <div class="rates-list">
+        <div class="rate-item" *ngFor="let rate of historicalData.daily">
+          <span class="date">{{ rate.date | date }}</span>
+          <span class="rate">1 {{ fromCurrency }} = {{ rate.rate | number:'1.4-4' }} {{ toCurrency }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Popular Rates Section -->
+  <div class="popular-rates" *ngIf="!loading$.value && !error$.value">
+    <h3>Popular Exchange Rates</h3>
+    <div class="rates-grid">
+      <div class="rate-card" *ngFor="let rate of popularRates">
+        <div class="currency-info">
+          <span class="currency-code">{{ rate.currency }}</span>
+          <span class="currency-name">({{ rate.name }})</span>
+        </div>
+        <div class="rate-value">
+          1 {{ fromCurrency }} = {{ rate.rate | number:'1.4-4' }} {{ rate.currency }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Loading and Error States -->
+  <div class="loading" *ngIf="loading$ | async">Loading...</div>
+  <div class="error" *ngIf="error$ | async as error">{{ error }}</div>
+</div>

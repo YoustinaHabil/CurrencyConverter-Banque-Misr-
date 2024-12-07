@@ -1,0 +1,12 @@
+<header class="header">
+  <div class="header__logo">
+    <a routerLink="/">
+      <img src="assets/logo.png" alt="Currency Converter" />
+      <span>Currency Converter</span>
+    </a>
+  </div>
+  <nav class="header__nav">
+    <a (click)="navigateToCurrency('USD')" [class.active]="isActiveCurrency('USD')" role="button">USD</a>
+    <a (click)="navigateToCurrency('EUR')" [class.active]="isActiveCurrency('EUR')" role="button">EUR</a>
+  </nav>
+</header>
