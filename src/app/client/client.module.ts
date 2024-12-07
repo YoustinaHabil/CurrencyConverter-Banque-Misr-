@@ -5,8 +5,6 @@ import { RouterModule } from '@angular/router';
 
 import { HeaderComponent } from './components/header/header.component';
 import { CurrencyConverterComponent } from './components/currency-converter/currency-converter.component';
-import { UsdDetailsComponent } from './components/usd-details/usd-details.component';
-import { EurDetailsComponent } from './components/eur-details/eur-details.component';
 import { CurrencyDetailsComponent } from './components/currency-details/currency-details.component';
 import { ClientRoutingModule } from './client-routing.module';
 
@@ -14,8 +12,7 @@ import { ClientRoutingModule } from './client-routing.module';
   declarations: [
     HeaderComponent,
     CurrencyConverterComponent,
-    UsdDetailsComponent,
-    EurDetailsComponent,
+
     CurrencyDetailsComponent
   ],
   imports: [
